@@ -1,0 +1,141 @@
+/* CSS Variables */
+:root {
+    --primary-color: #1d3557;
+    --secondary-color: #457b9d;
+    --accent1-color: #f1faee;
+    --accent2-color: #e63946;
+
+    --heading-font: Georgia, serif;
+    --body-font: Arial, Helvetica, sans-serif;
+}
+
+/* Reset the default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: var(--body-font);
+    color: var(--primary-color);
+    background-color: white;
+}
+
+/* Center the page */
+header,
+main,
+footer {
+    width: 840px;
+    margin: 0 auto;
+}
+
+/* Heading styles */
+h1,
+h2 {
+    font-family: var(--heading-font);
+    color: var(--secondary-color);
+}
+
+/* Basic spacing */
+nav,
+p,
+section,
+article {
+    margin: 16px;
+    padding: 8px;
+}
+
+/* Header */
+header {
+    background-color: var(--primary-color);
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    align-items: center;
+}
+
+header img {
+    width: 100px;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--accent1-color);
+    font-weight: bold;
+}
+
+/* Hero section */
+.hero {
+    position: relative;
+}
+
+.hero img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.hero h1 {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: rgba(29, 53, 87, 0.8);
+    padding: 10px;
+}
+
+.hero article {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background-color: rgba(241, 250, 238, 0.9);
+}
+
+.hero article img {
+    float: right;
+    width: 150px;
+    margin-left: 10px;
+}
+
+/* Sections */
+section {
+    padding: 20px;
+}
+
+section h2 {
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--accent1-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Social media icons */
+.socialmedia {
+    display: flex;
+    gap: 10px;
+}
+
+.socialmedia a {
+    text-decoration: none;
+}
+
+.socialmedia img {
+    width: 35px;
+    height: 35px;
+}
