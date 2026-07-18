@@ -88,7 +88,7 @@ nav a {
     width: 100%;
     text-align: center;
     color: white;
-    background-color: rgba(29, 53, 87, 0.8);
+    background-color: var(--accent2-color);
     padding: 10px;
 }
 
