@@ -1,0 +1,267 @@
+{% extends "base.html" %}
+
+{% block title %}HOUSE CAMPUS | Find Student Housing{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero">
+
+    <div class="container text-center">
+
+        <h1 class="display-3 fw-bold">
+            Find Your Perfect Student Home
+        </h1>
+
+        <p class="lead mt-4 mb-5">
+            Discover safe, affordable and verified accommodation near your university.
+        </p>
+
+        <form action="{% url 'property_list' %}" method="GET" class="row justify-content-center">
+
+            <div class="col-md-6 mb-3">
+
+                <input type="text" name="q" class="form-control form-control-lg"
+                  placeholder="Search by university, town or property...">
+
+            </div>
+
+            <div class="col-md-2 mb-3">
+
+                <button class="btn btn-warning btn-lg w-100">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    Search
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- Statistics -->
+
+<section class="stats bg-light">
+
+    <div class="container">
+
+        <div class="row text-center">
+
+            <div class="col-md-4">
+
+                <h2 class="text-primary">
+
+                    {{ total_properties }}
+
+                </h2>
+
+                <h5>Total Properties</h5>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <h2 class="text-success">
+
+                    {{ available_properties }}
+
+                </h2>
+
+                <h5>Available Properties</h5>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <h2 class="text-warning">
+
+                    100%
+
+                </h2>
+
+                <h5>Verified Listings</h5>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Featured Properties -->
+
+<section class="container py-5">
+
+    <h2 class="text-center fw-bold mb-5">
+
+        Featured Properties
+
+    </h2>
+
+    <div class="row">
+
+        {% for property in featured_properties %}
+
+        <div class="col-lg-4 col-md-6 mb-4">
+
+            <div class="card shadow h-100">
+
+                {% if property.image %}
+
+                <img src="{{ property.image.url }}" class="card-img-top"
+                  style="height:220px; object-fit:cover;" alt="{{ property.title }}">
+
+                {% else %}
+
+                <img src="https://via.placeholder.com/600x400?text=HOUSE+CAMPUS"
+                  class="card-img-top" style="height:220px; object-fit:cover;" alt="No image">
+
+                {% endif %}
+
+                <div class="card-body">
+
+                    <h5>{{ property.title }}</h5>
+
+                    <p class="text-muted">
+
+                        <i class="fa-solid fa-graduation-cap"></i>
+
+                        {{ property.university }}
+
+                    </p>
+
+                    <p class="text-muted">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        {{ property.town }}, {{ property.county }}
+
+                    </p>
+
+                    <h4 class="text-success">
+
+                        KSh {{ property.price }}
+
+                    </h4>
+
+                </div>
+
+                <div class="card-footer bg-white border-0">
+
+                    <a href="{% url 'property_detail' property.pk %}" class="btn btn-primary w-100">
+
+                        View Property
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="col-12">
+
+            <div class="alert alert-info text-center">
+
+                No properties available.
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!-- Why Choose HOUSE CAMPUS -->
+
+<section class="bg-dark text-white py-5">
+
+    <div class="container">
+
+        <h2 class="text-center mb-5">
+
+            Why Choose HOUSE CAMPUS?
+
+        </h2>
+
+        <div class="row text-center">
+
+            <div class="col-md-3">
+
+                <i class="fa-solid fa-shield-halved fa-3x mb-3 text-warning"></i>
+
+                <h5>Verified Listings</h5>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <i class="fa-solid fa-school fa-3x mb-3 text-warning"></i>
+
+                <h5>Near Universities</h5>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <i class="fa-solid fa-money-bill-wave fa-3x mb-3 text-warning"></i>
+
+                <h5>Affordable Prices</h5>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <i class="fa-solid fa-headset fa-3x mb-3 text-warning"></i>
+
+                <h5>24/7 Support</h5>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Call To Action -->
+
+<section class="py-5">
+
+    <div class="container text-center">
+
+        <h2 class="fw-bold">
+
+            Ready to Find Your Next Home?
+
+        </h2>
+
+        <p class="lead">
+
+            Browse our verified student accommodation today.
+
+        </p>
+
+        <a href="{% url 'property_list' %}" class="btn btn-success btn-lg">
+
+            Explore Properties
+
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f5f7fb;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.sidebar {
+
+    width: 270px;
+
+    min-height: 100vh;
+
+    background: #0f172a;
+
+    color: white;
+
+    position: fixed;
+
+    left: 0;
+
+    top: 0;
+
+}
+
+.logo {
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    padding: 30px;
+
+    text-align: center;
+
+}
+
+.logo i {
+
+    color: #3b82f6;
+
+}
+
+.sidebar ul {
+
+    list-style: none;
+
+    padding: 0;
+
+}
+
+.sidebar li {
+
+    margin: 8px 15px;
+
+}
+
+.sidebar a {
+
+    display: block;
+
+    color: #cbd5e1;
+
+    text-decoration: none;
+
+    padding: 14px 18px;
+
+    border-radius: 12px;
+
+    transition: .3s;
+
+}
+
+.sidebar a:hover {
+
+    background: #2563eb;
+
+    color: white;
+
+}
+
+.sidebar .active a {
+
+    background: #2563eb;
+
+    color: white;
+
+}
+
+.main {
+
+    margin-left: 270px;
+
+    width: 100%;
+
+}
+
+.topbar {
+
+    height: 80px;
+
+    background: white;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 0 30px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .08);
+
+}
+
+.search input {
+
+    width: 350px;
+
+    border: none;
+
+    background: #f1f5f9;
+
+    padding: 12px;
+
+    border-radius: 12px;
+
+}
+
+.profile {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    font-size: 22px;
+
+}
+
+.avatar {
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 50%;
+
+}
+
+.content {
+
+    padding: 35px;
+
+}
+
+.card {
+    border-radius: 20px;
+    transition: .35s;
+}
+
+.card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .15);
+
+}
+
+.card-body {
+
+    position: relative;
+
+    min-height: 170px;
+
+}
+
+.card-body i {
+
+    position: absolute;
+
+    right: 25px;
+
+    bottom: 20px;
+
+    opacity: .2;
+
+}

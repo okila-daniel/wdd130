@@ -4,212 +4,127 @@
 
 {% block content %}
 
-<section class="hero">
-
-    <div class="container">
-
-        <h1>
+<!-- Hero -->
+<section class="hero py-5 bg-light">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold">
             Find Your Perfect
-            <span class="text-warning">Student Home</span>
+            <span class="text-primary">Student Home</span>
         </h1>
 
-        <p class="lead mt-4">
-            Safe, Affordable and Verified Student Accommodation
-            Across Kenya.
+        <p class="lead mt-3">
+            Safe, Affordable and Verified Student Accommodation Across Kenya.
         </p>
 
         <div class="mt-4">
-
-            <a href="/register/student/" class="btn btn-primary btn-lg me-3">
+            <a href="/register/student/" class="btn btn-primary btn-lg me-2">
                 Get Started
             </a>
 
             <a href="/login/" class="btn btn-outline-dark btn-lg">
                 Login
             </a>
-
         </div>
 
-        <!-- Search Box -->
-
-        <div class="search-box mt-5">
-
+        <div class="mt-5">
             <form>
-
                 <div class="input-group input-group-lg">
-
                     <input type="text" class="form-control"
                       placeholder="Search by university, town or county">
 
                     <button class="btn btn-primary">
-
-                        <i class="fa-solid fa-magnifying-glass"></i>
-
                         Search
-
                     </button>
-
                 </div>
-
             </form>
-
         </div>
-
     </div>
-
 </section>
-<section class="stats py-5">
 
+<!-- Statistics -->
+<section class="py-5">
     <div class="container">
-
         <div class="row text-center">
 
-            <div class="col-md-3 mb-4">
+            <div class="col-md-3">
                 <h2>10,000+</h2>
                 <p>Students</p>
             </div>
 
-            <div class="col-md-3 mb-4">
+            <div class="col-md-3">
                 <h2>500+</h2>
                 <p>Landlords</p>
             </div>
 
-            <div class="col-md-3 mb-4">
+            <div class="col-md-3">
                 <h2>3,000+</h2>
                 <p>Verified Houses</p>
             </div>
 
-            <div class="col-md-3 mb-4">
+            <div class="col-md-3">
                 <h2>50+</h2>
                 <p>Universities</p>
             </div>
 
         </div>
-
     </div>
-
-</section>
-<!-- ================= FEATURED UNIVERSITIES ================= -->
-
-<section class="py-5">
-
-    <div class="container">
-
-        <h2 class="section-title">
-            Featured Universities
-        </h2>
-
-        <p class="text-center text-muted mb-5">
-            Find accommodation near Kenya's top universities.
-        </p>
-
-        <div class="row g-4">
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="card university-card text-center p-4">
-
-                    <i class="fa-solid fa-graduation-cap university-icon"></i>
-
-                    <h5 class="mt-3">
-                        Maasai Mara University
-                    </h5>
-
-                    <p>Narok County</p>
-
-                </div>
-
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="card university-card text-center p-4">
-
-                    <i class="fa-solid fa-building-columns university-icon"></i>
-
-                    <h5 class="mt-3">
-                        University of Nairobi
-                    </h5>
-
-                    <p>Nairobi</p>
-
-                </div>
-
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="card university-card text-center p-4">
-
-                    <i class="fa-solid fa-school university-icon"></i>
-
-                    <h5 class="mt-3">
-                        Kenyatta University
-                    </h5>
-
-                    <p>Kiambu</p>
-
-                </div>
-
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="card university-card text-center p-4">
-
-                    <i class="fa-solid fa-university university-icon"></i>
-
-                    <h5 class="mt-3">
-                        JKUAT
-                    </h5>
-
-                    <p>Juja</p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
 </section>
 
-<!-- ================= FEATURED HOUSES ================= -->
-
+<!-- Properties -->
 <section class="py-5 bg-light">
-
     <div class="container">
 
-        <h2 class="section-title">
-            Featured Houses
+        <h2 class="text-center mb-5">
+            Available Student Houses
         </h2>
 
-        <div class="row g-4">
+        <div class="row">
 
-            <div class="col-lg-4">
+            {% for property in properties %}
 
-                <div class="card house-card">
+            <div class="col-lg-4 mb-4">
 
-                    <img src="https://picsum.photos/500/300?random=1" class="card-img-top">
+                <div class="card shadow-sm h-100">
+
+                    {% if property.image %}
+                    <img src="{{ property.image.url }}" class="card-img-top"
+                      style="height:250px;object-fit:cover;">
+                    {% else %}
+                    <img src="https://picsum.photos/600/400?random={{ property.id }}"
+                      class="card-img-top" style="height:250px;object-fit:cover;">
+                    {% endif %}
 
                     <div class="card-body">
 
-                        <h5>Modern Student Apartment</h5>
+                        <span class="badge bg-success mb-2">
+                            {{ property.house_type }}
+                        </span>
+
+                        <h4>{{ property.title }}</h4>
+
+                        <p class="text-muted">
+                            {{ property.university }}
+                        </p>
 
                         <p>
-                            <i class="fa-solid fa-location-dot"></i>
-                            Narok Town
+                            📍 {{ property.town }}, {{ property.county }}
+                        </p>
+
+                        <p>
+                            🛏 {{ property.bedrooms }} Bedroom(s)
+                        </p>
+
+                        <p>
+                            🛁 {{ property.bathrooms }} Bathroom(s)
                         </p>
 
                         <h4 class="text-danger">
-                            KSh 6,500 / Month
+                            KSh {{ property.price }}/Month
                         </h4>
 
-                        <a href="#" class="btn btn-primary w-100">
-
+                        <a href="{% url 'property_detail' property.id %}"
+                          class="btn btn-primary w-100">
                             View Details
-
                         </a>
 
                     </div>
@@ -218,157 +133,23 @@
 
             </div>
 
-            <div class="col-lg-4">
+            {% empty %}
 
-                <div class="card house-card">
+            <div class="col-12 text-center">
 
-                    <img src="https://picsum.photos/500/300?random=2" class="card-img-top">
+                <h3>No Properties Available</h3>
 
-                    <div class="card-body">
-
-                        <h5>Executive Bedsitter</h5>
-
-                        <p>
-                            <i class="fa-solid fa-location-dot"></i>
-                            Near MMU
-                        </p>
-
-                        <h4 class="text-danger">
-                            KSh 8,000 / Month
-                        </h4>
-
-                        <a href="#" class="btn btn-primary w-100">
-
-                            View Details
-
-                        </a>
-
-                    </div>
-
-                </div>
+                <p>
+                    Add houses from the Django Admin Panel.
+                </p>
 
             </div>
 
-            <div class="col-lg-4">
-
-                <div class="card house-card">
-
-                    <img src="https://picsum.photos/500/300?random=3" class="card-img-top">
-
-                    <div class="card-body">
-
-                        <h5>Hostel Room</h5>
-
-                        <p>
-                            <i class="fa-solid fa-location-dot"></i>
-                            Narok CBD
-                        </p>
-
-                        <h4 class="text-danger">
-                            KSh 5,000 / Month
-                        </h4>
-
-                        <a href="#" class="btn btn-primary w-100">
-
-                            View Details
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
+            {% endfor %}
 
         </div>
 
     </div>
-
 </section>
 
-<!-- ================= UNIVERSITIES ================= -->
-
-<section class="py-5">
-
-    <div class="container">
-
-        <h2 class="section-title">
-            Partner Universities
-        </h2>
-
-        <p class="text-center text-muted mb-5">
-            Helping students find accommodation near their universities.
-        </p>
-
-        <div class="row g-4">
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="card university-card p-4 text-center">
-
-                    <i class="fa-solid fa-graduation-cap university-icon"></i>
-
-                    <h5 class="mt-3">
-                        Maasai Mara University
-                    </h5>
-
-                    <p>Narok County</p>
-
-                </div>
-
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="card university-card p-4 text-center">
-
-                    <i class="fa-solid fa-school university-icon"></i>
-
-                    <h5 class="mt-3">
-                        University of Nairobi
-                    </h5>
-
-                    <p>Nairobi</p>
-
-                </div>
-
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="card university-card p-4 text-center">
-
-                    <i class="fa-solid fa-building-columns university-icon"></i>
-
-                    <h5 class="mt-3">
-                        Kenyatta University
-                    </h5>
-
-                    <p>Kiambu</p>
-
-                </div>
-
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="card university-card p-4 text-center">
-
-                    <i class="fa-solid fa-university university-icon"></i>
-
-                    <h5 class="mt-3">
-                        JKUAT
-                    </h5>
-
-                    <p>Juja</p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
 {% endblock %}

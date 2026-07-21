@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block title %}Properties | HOUSE CAMPUS{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold">Available Properties</h2>
+            <p class="text-muted">Find accommodation near your university.</p>
+        </div>
+
+        <a href="{% url 'add_property' %}" class="btn btn-success">
+            <i class="fa-solid fa-plus"></i> Add Property
+        </a>
+    </div>
+
+    <!-- Search & Filter -->
+    <form method="GET" class="row g-3 mb-4">
+
+        <div class="col-md-4">
+            <input type="text" name="q" class="form-control"
+              placeholder="Search by title, university or town..." value="{{ query }}">
+        </div>
+
+        <div class="col-md-3">
+            <input type="text" name="county" class="form-control" placeholder="County"
+              value="{{ county }}">
+        </div>
+
+        <div class="col-md-2">
+            <input type="number" name="max_price" class="form-control" placeholder="Maximum Price"
+              value="{{ max_price }}">
+        </div>
+
+        <div class="col-md-2">
+
+            <select name="available" class="form-select">
+
+                <option value="">All Properties</option>
+
+                {% if available %}
+                <option value="yes" selected>Available Only</option>
+                {% else %}
+                <option value="yes">Available Only</option>
+                {% endif %}
+
+            </select>
+
+        </div>
+
+        <div class="col-md-1">
+            <button class="btn btn-primary w-100">
+                <i class="fa-solid fa-filter"></i>
+            </button>
+        </div>
+
+    </form>
+
+    <div class="row">
+
+        {% for property in properties %}
+
+        <div class="col-lg-4 col-md-6 mb-4">
+
+            <div class="card shadow h-100">
+
+                {% if property.image %}
+                <img src="{{ property.image.url }}" class="card-img-top"
+                  style="height:220px;object-fit:cover;" alt="{{ property.title }}">
+                {% else %}
+                <img src="https://via.placeholder.com/600x400?text=HOUSE+CAMPUS"
+                  class="card-img-top" style="height:220px;object-fit:cover;" alt="No image">
+                {% endif %}
+
+                <div class="card-body">
+
+                    <h5>{{ property.title }}</h5>
+
+                    <p class="text-muted">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        {{ property.university }}
+                    </p>
+
+                    <p class="text-muted">
+                        <i class="fa-solid fa-location-dot"></i>
+                        {{ property.town }}, {{ property.county }}
+                    </p>
+
+                    <h4 class="text-success">
+                        KSh {{ property.price }}
+                    </h4>
+
+                    {% if property.available %}
+                    <span class="badge bg-success">Available</span>
+                    {% else %}
+                    <span class="badge bg-danger">Occupied</span>
+                    {% endif %}
+
+                </div>
+
+                <div class="card-footer bg-white border-0">
+
+                    <div class="d-grid gap-2">
+
+                        <a href="{% url 'property_detail' property.pk %}" class="btn btn-primary">
+                            View
+                        </a>
+
+                        <a href="{% url 'edit_property' property.pk %}" class="btn btn-warning">
+                            Edit
+                        </a>
+
+                        <a href="{% url 'delete_property' property.pk %}" class="btn btn-danger">
+                            Delete
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="col-12">
+
+            <div class="alert alert-info text-center">
+                <h4>No properties found.</h4>
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% if page_obj.has_other_pages %}
+
+    <nav>
+
+        <ul class="pagination justify-content-center mt-4">
+
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                    Previous
+                </a>
+            </li>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+
+            <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+
+                <a class="page-link" href="?page={{ num }}">
+                    {{ num }}
+                </a>
+
+            </li>
+
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                    Next
+                </a>
+            </li>
+            {% endif %}
+
+        </ul>
+
+    </nav>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

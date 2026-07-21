@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'accounts',
     'properties',
+    'portal',
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +126,5 @@ STATICFILES_DIRS = [
 ]
 
 AUTH_USER_MODEL = "accounts.User"
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"

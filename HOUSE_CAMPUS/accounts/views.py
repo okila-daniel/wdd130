@@ -1,11 +1,21 @@
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.shortcuts import render, redirect
+
 from .forms import StudentRegistrationForm
+from properties.models import Property
 
 
 def home(request):
-    return render(request, "accounts/home.html")
+    properties = Property.objects.filter(available=True)
+
+    return render(
+        request,
+        "accounts/home.html",
+        {
+            "properties": properties,
+        },
+    )
 
 
 def register_student(request):
@@ -22,14 +32,16 @@ def register_student(request):
     return render(
         request,
         "accounts/register_student.html",
-        {"form": form},
+        {
+            "form": form,
+        },
     )
 
 
 def login_user(request):
     if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
+        username = request.POST.get("username")
+        password = request.POST.get("password")
 
         user = authenticate(
             request,
@@ -39,7 +51,13 @@ def login_user(request):
 
         if user is not None:
             login(request, user)
-            return redirect("dashboard")
+
+            # Redirect landlords to the landlord dashboard
+            if hasattr(user, "role") and user.role == "landlord":
+                return redirect("/dashboard/")
+
+            # Redirect students to their dashboard
+            return redirect("/accounts/dashboard/")
 
         messages.error(request, "Invalid username or password.")
 
@@ -47,4 +65,7 @@ def login_user(request):
 
 
 def dashboard(request):
-    return render(request, "accounts/dashboard.html")
+    return render(
+        request,
+        "accounts/dashboard.html",
+    )

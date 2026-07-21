@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2>{{ property.title }}</h2>
+
+    {% if property.image %}
+    <img src="{{ property.image.url }}" class="img-fluid mb-3" width="400">
+    {% endif %}
+
+    <p><strong>University:</strong> {{ property.university }}</p>
+
+    <p><strong>County:</strong> {{ property.county }}</p>
+
+    <p><strong>Town:</strong> {{ property.town }}</p>
+
+    <p><strong>Price:</strong> KSh {{ property.price }}</p>
+
+    <p><strong>Bedrooms:</strong> {{ property.bedrooms }}</p>
+
+    <p><strong>Bathrooms:</strong> {{ property.bathrooms }}</p>
+
+    <p><strong>Description:</strong></p>
+
+    <p>{{ property.description }}</p>
+
+    <a href="{% url 'property_list' %}" class="btn btn-secondary">
+        Back to Properties
+    </a>
+
+</div>
+
+{% endblock %}
