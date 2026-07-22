@@ -176,3 +176,18 @@ footer {
     margin-left: 15px;
     border: 2px solid white;
 }
+
+.adventure {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.adventure figure {
+    text-align: center;
+}
+
+.adventure img {
+    width: 100%;
+    height: auto;
+}
