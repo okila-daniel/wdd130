@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Inbox{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2>📥 Inbox</h2>
+
+    <hr>
+
+    {% if messages %}
+
+    {% for message in messages %}
+
+    <div class="card mb-3">
+
+        <div class="card-body">
+
+            <h5>{{ message.subject }}</h5>
+
+            <p>
+                <strong>From:</strong>
+                {{ message.sender.username }}
+            </p>
+
+            <p>
+                <strong>Property:</strong>
+                {{ message.property.title }}
+            </p>
+
+            <p>{{ message.message }}</p>
+
+            <small class="text-muted">
+                {{ message.created_at }}
+            </small>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+    {% else %}
+
+    <div class="alert alert-info">
+        No messages yet.
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

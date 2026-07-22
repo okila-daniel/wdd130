@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'properties',
     'portal',
     'home',
+    'landlord',
+    'messaging',
 ]
 
 MIDDLEWARE = [

@@ -1,8 +1,9 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
-from .forms import StudentRegistrationForm
+from .forms import StudentRegistrationForm, ProfileForm
 from properties.models import Property
 
 
@@ -24,7 +25,8 @@ def register_student(request):
 
         if form.is_valid():
             form.save()
-            return redirect("home")
+            messages.success(request, "Account created successfully.")
+            return redirect("login")
 
     else:
         form = StudentRegistrationForm()
@@ -52,11 +54,9 @@ def login_user(request):
         if user is not None:
             login(request, user)
 
-            # Redirect landlords to the landlord dashboard
             if hasattr(user, "role") and user.role == "landlord":
                 return redirect("/dashboard/")
 
-            # Redirect students to their dashboard
             return redirect("/accounts/dashboard/")
 
         messages.error(request, "Invalid username or password.")
@@ -64,8 +64,45 @@ def login_user(request):
     return render(request, "accounts/login.html")
 
 
+@login_required
 def dashboard(request):
     return render(
         request,
         "accounts/dashboard.html",
     )
+
+
+@login_required
+def profile(request):
+
+    if request.method == "POST":
+
+        form = ProfileForm(
+            request.POST,
+            request.FILES,
+            instance=request.user
+        )
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Profile updated successfully.")
+            return redirect("profile")
+
+    else:
+
+        form = ProfileForm(instance=request.user)
+
+    return render(
+        request,
+        "accounts/profile.html",
+        {
+            "form": form,
+        },
+    )
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+
+
+def logout_user(request):
+    logout(request)
+    return redirect("home")

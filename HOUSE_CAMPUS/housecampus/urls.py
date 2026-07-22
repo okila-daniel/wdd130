@@ -5,13 +5,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-
     path("", include("home.urls")),
     path("properties/", include("properties.urls")),
     path("dashboard/", include("portal.urls")),
-
-    # Add this line
     path("accounts/", include("accounts.urls")),
+    path("landlord/", include("landlord.urls")),
+    path("messages/", include("messaging.urls")),
 ]
 
 if settings.DEBUG:
