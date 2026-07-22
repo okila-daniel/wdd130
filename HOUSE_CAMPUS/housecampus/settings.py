@@ -18,11 +18,11 @@ DEBUG = False
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
+    "wdd130-ge6x.onrender.com",
     "housecampuske.onrender.com",
     "housecampuske.com",
     "www.housecampuske.com",
 ]
-
 # Application definition
 
 INSTALLED_APPS = [
