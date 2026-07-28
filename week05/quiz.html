@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Fundamentals Quiz</title>
+    <link rel="stylesheet" href="styles/quiz.css">
+</head>
+
+<body>
+
+    <form>
+        <h1>Web Fundamentals Quiz</h1>
+
+        <div class="form-item">
+            <label for="q1">1. Which language is used to structure a web page?</label>
+            <input type="text" id="q1" name="q1" required>
+        </div>
+
+        <div class="form-item">
+            <label for="q2">2. In your own words, explain why CSS is important in web
+                development.</label>
+            <textarea id="q2" name="q2" rows="5" required></textarea>
+        </div>
+
+        <div class="form-item">
+            <label for="q3">3. Which CSS property is used to change the text color?</label>
+            <select id="q3" name="q3" required>
+                <option value="" selected disabled>Select an answer</option>
+                <option value="font">font-style</option>
+                <option value="color">color</option>
+                <option value="background">background-color</option>
+            </select>
+        </div>
+
+        <div class="form-item">
+            <label for="q4">4. How many heading elements are available in HTML?</label>
+            <input type="number" id="q4" name="q4" min="1" max="6" required>
+        </div>
+
+        <button type="submit">Submit Quiz</button>
+    </form>
+
+</body>
+
+</html>
