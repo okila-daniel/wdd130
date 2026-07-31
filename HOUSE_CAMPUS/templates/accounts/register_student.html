@@ -1,25 +1,129 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}
-Student Registration
-{% endblock %}
+{% block title %}Student Registration{% endblock %}
 
 {% block content %}
 
-<h2 class="mb-4">
-    Student Registration
-</h2>
+<section class="register-section py-5">
+    <div class="container">
 
-<form method="post">
+        <div class="row justify-content-center align-items-center">
 
-    {% csrf_token %}
+            <div class="col-lg-6 d-none d-lg-flex">
 
-    {{ form.as_p }}
+                <div class="welcome-panel text-white p-5 rounded-4">
 
-    <button class="btn btn-success">
-        Create Account
-    </button>
+                    <img src="{% static 'images/logo.png' %}" width="120" class="mb-4">
 
-</form>
+                    <h1 class="fw-bold">
+                        Welcome to HOUSE CAMPUS
+                    </h1>
+
+                    <p class="mt-4">
+                        Find verified student houses around Maasai Mara University.
+                    </p>
+
+                    <ul class="mt-4">
+                        <li>Verified landlords</li>
+                        <li>Affordable houses</li>
+                        <li>Safe locations</li>
+                        <li>Easy booking</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <div class="card shadow-lg border-0 rounded-4">
+
+                    <div class="card-body p-5">
+
+                        <h2 class="fw-bold mb-4">
+                            Create Account
+                        </h2>
+
+                        <form method="POST">
+
+                            {% csrf_token %}
+
+                            {{ form.non_field_errors }}
+
+                            <div class="row">
+
+                                <div class="col-md-6 mb-3">
+                                    {{ form.first_name.label_tag }}
+                                    {{ form.first_name }}
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    {{ form.last_name.label_tag }}
+                                    {{ form.last_name }}
+                                </div>
+
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form.username.label_tag }}
+                                {{ form.username }}
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form.email.label_tag }}
+                                {{ form.email }}
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form.phone.label_tag }}
+                                {{ form.phone }}
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form.whatsapp_number.label_tag }}
+                                {{ form.whatsapp_number }}
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form.password1.label_tag }}
+                                {{ form.password1 }}
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form.password2.label_tag }}
+                                {{ form.password2 }}
+                            </div>
+
+                            <button class="btn btn-primary w-100 py-3 rounded-pill">
+
+                                Create Account
+
+                            </button>
+
+                        </form>
+
+                        <hr>
+
+                        <p class="text-center">
+
+                            Already have an account?
+
+                            <a href="{% url 'login' %}">
+                                Sign In
+                            </a>
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
 
 {% endblock %}

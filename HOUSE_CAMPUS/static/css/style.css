@@ -69,3 +69,389 @@ body {
 footer {
     margin-top: 80px;
 }
+
+.form-control {
+    border-radius: 12px;
+    padding: 12px 15px;
+}
+
+.form-control:focus {
+    border-color: #2563EB;
+    box-shadow: 0 0 0 .2rem rgba(37, 99, 235, .15);
+}
+
+.card {
+    overflow: hidden;
+}
+
+.btn-warning {
+    background: #FBBF24;
+    border: none;
+    font-weight: 600;
+}
+
+.btn-warning:hover {
+    background: #f59e0b;
+}
+
+/* ================= NAVBAR ================= */
+
+.custom-navbar {
+    background: #ffffff;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, .08);
+    padding: 15px 0;
+}
+
+.custom-navbar .navbar-brand {
+    color: #2563EB;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.custom-navbar .nav-link {
+    color: #334155;
+    font-weight: 500;
+    margin-left: 12px;
+    transition: .3s;
+}
+
+.custom-navbar .nav-link:hover {
+    color: #2563EB;
+}
+
+.custom-navbar .btn-primary {
+    background: #2563EB;
+    border: none;
+    border-radius: 10px;
+}
+
+.custom-navbar .btn-outline-light {
+    color: #2563EB;
+    border: 2px solid #2563EB;
+    background: white;
+}
+
+.custom-navbar .btn-outline-light:hover {
+    background: #2563EB;
+    color: white;
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+    transition: .3s;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.brand-name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0F172A;
+    letter-spacing: .5px;
+}
+
+.register-section {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    background: #f7f9fc;
+}
+
+.welcome-panel {
+    background: linear-gradient(135deg, #2563EB, #10B981);
+    min-height: 650px;
+}
+
+.card {
+    border-radius: 25px;
+}
+
+.form-control {
+    height: 55px;
+    border-radius: 12px;
+}
+
+.btn-primary {
+    background: #2563EB;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+}
+
+.register-section {
+    min-height: 100vh;
+    background: #f4f7fb;
+}
+
+.welcome-panel {
+    background: linear-gradient(135deg, #2563EB, #10B981);
+    min-height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card {
+    border-radius: 20px;
+}
+
+.form-control {
+    border-radius: 12px;
+    height: 52px;
+}
+
+.btn-primary {
+    background: #2563EB;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+}
+
+/* ============================= */
+/* HOUSE CAMPUS DESIGN SYSTEM */
+/* ============================= */
+
+:root {
+
+    --primary: #2563EB;
+    --secondary: #10B981;
+    --accent: #FBBF24;
+    --dark: #0F172A;
+    --light: #F8FAFC;
+    --white: #FFFFFF;
+
+}
+
+body {
+
+    font-family: 'Poppins', sans-serif;
+    background: var(--light);
+    color: var(--dark);
+
+}
+
+/* NAVBAR */
+
+.navbar {
+
+    height: 80px;
+    transition: .3s;
+
+}
+
+.nav-link {
+
+    font-weight: 500;
+    margin-left: 15px;
+    color: var(--dark) !important;
+
+}
+
+.nav-link:hover {
+
+    color: var(--primary) !important;
+
+}
+
+.navbar-brand {
+
+    font-weight: 700;
+
+}
+
+/* LOGO */
+
+.logo {
+
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+
+}
+
+/* BUTTONS */
+
+.btn {
+
+    border-radius: 50px;
+    padding: 12px 28px;
+    transition: .3s;
+
+}
+
+.btn-primary {
+
+    background: var(--primary);
+    border: none;
+
+}
+
+.btn-primary:hover {
+
+    background: #1d4ed8;
+    transform: translateY(-2px);
+
+}
+
+.btn-success {
+
+    background: var(--secondary);
+    border: none;
+
+}
+
+/* CARD */
+
+.card {
+
+    border: none;
+    border-radius: 25px;
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, .08);
+
+}
+
+/* REGISTER PAGE */
+
+.register-section {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    background:
+
+        linear-gradient(135deg,
+            #F8FAFC,
+            #EEF5FF);
+
+}
+
+.welcome-panel {
+
+    min-height: 720px;
+
+    background:
+
+        linear-gradient(135deg,
+            #2563EB,
+            #10B981);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    border-radius: 30px;
+
+    box-shadow:
+
+        0 20px 50px rgba(0, 0, 0, .15);
+
+}
+
+/* FORM */
+
+.form-control {
+
+    height: 55px;
+
+    border-radius: 15px;
+
+    border: 1px solid #dbe4f0;
+
+    transition: .3s;
+
+}
+
+.form-control:focus {
+
+    border-color: var(--primary);
+
+    box-shadow:
+
+        0 0 0 .15rem rgba(37, 99, 235, .25);
+
+}
+
+/* ERRORS */
+
+.errorlist {
+
+    color: #dc3545;
+
+    list-style: none;
+
+    padding: 0;
+
+    margin-top: 6px;
+
+    font-size: .9rem;
+
+}
+
+/* FOOTER */
+
+footer {
+
+    background: var(--dark);
+
+}
+
+/* ANIMATIONS */
+
+.card {
+
+    animation: fadeUp .8s ease;
+
+}
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+/* MOBILE */
+
+@media(max-width:992px) {
+
+    .welcome-panel {
+
+        display: none;
+
+    }
+
+    .register-section {
+
+        padding: 40px 15px;
+
+    }
+
+}
