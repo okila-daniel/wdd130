@@ -5,6 +5,7 @@
 <head>
 
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
@@ -35,7 +36,7 @@
     <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    <!-- CSS -->
+    <!-- Custom CSS -->
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
@@ -49,15 +50,15 @@
     {% if request.resolver_match.url_name != "register_student" and request.resolver_match.url_name
     != "login" %}
 
-    <nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
 
         <div class="container">
 
             <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
 
-                <img src="{% static 'images/logo.png' %}" style="height:55px;">
+                <img src="{% static 'images/logo.png' %}" alt="HOUSE CAMPUS" style="height:55px;">
 
-                <span class="ms-2 fw-bold" style="color:#2563EB;font-size:28px;">
+                <span class="fw-bold ms-2" style="font-size:28px;color:#2563EB;">
 
                     HOUSE CAMPUS
 
@@ -78,7 +79,7 @@
 
                     <li class="nav-item">
 
-                        <a class="nav-link fw-semibold" href="{% url 'home' %}">
+                        <a class="nav-link" href="{% url 'home' %}">
 
                             Home
 
@@ -88,9 +89,9 @@
 
                     <li class="nav-item">
 
-                        <a class="nav-link fw-semibold" href="{% url 'property_list' %}">
+                        <a class="nav-link" href="{% url 'property_list' %}">
 
-                            Find Houses
+                            Houses
 
                         </a>
 
@@ -98,7 +99,7 @@
 
                     <li class="nav-item">
 
-                        <a class="nav-link fw-semibold" href="#">
+                        <a class="nav-link" href="#">
 
                             Universities
 
@@ -108,7 +109,7 @@
 
                     <li class="nav-item">
 
-                        <a class="nav-link fw-semibold" href="#">
+                        <a class="nav-link" href="#">
 
                             About
 
@@ -140,7 +141,7 @@
 
                     <li class="nav-item ms-3">
 
-                        <a class="btn btn-danger rounded-pill px-4" href="{% url 'logout' %}">
+                        <a href="{% url 'logout' %}" class="btn btn-danger rounded-pill px-4">
 
                             Logout
 
@@ -152,8 +153,8 @@
 
                     <li class="nav-item ms-3">
 
-                        <a class="btn btn-outline-primary rounded-pill px-4"
-                          href="{% url 'login' %}">
+                        <a href="{% url 'login' %}"
+                          class="btn btn-outline-primary rounded-pill px-4">
 
                             Login
 
@@ -163,8 +164,8 @@
 
                     <li class="nav-item ms-2">
 
-                        <a class="btn rounded-pill px-4 text-white" style="background:#2563EB;"
-                          href="{% url 'register_student' %}">
+                        <a href="{% url 'register_student' %}"
+                          class="btn text-white rounded-pill px-4" style="background:#2563EB;">
 
                             Register
 
@@ -191,7 +192,7 @@
 
         {% else %}
 
-        <main class="container" style="margin-top:90px; min-height:80vh;">
+        <main class="container" style="margin-top:95px; min-height:80vh;">
 
             {% endif %}
 
@@ -217,7 +218,6 @@
             {% endif %}
 
             {% block content %}
-
             {% endblock %}
 
         </main>
@@ -226,42 +226,41 @@
         request.resolver_match.url_name
         != "login" %}
 
-        <footer class="pt-5 pb-4 mt-5" style="background:#0F172A; color:white;">
+        <footer style="background:#0F172A;" class="text-white pt-5 pb-4 mt-5">
 
             <div class="container">
 
-                <div class="row g-5">
+                <div class="row">
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 mb-4">
 
-                        <img src="{% static 'images/logo.png' %}" style="height:70px;">
+                        <img src="{% static 'images/logo.png' %}" alt="Logo" style="height:70px;">
 
-                        <h3 class="fw-bold mt-3">
+                        <h3 class="mt-3 fw-bold">
 
                             HOUSE CAMPUS
 
                         </h3>
 
-                        <p class="text-white-50 mt-3">
+                        <p class="text-white-50">
 
-                            Kenya's trusted student housing platform.
-
-                            Helping university students discover verified,
-                            affordable and secure accommodation near campus.
+                            Helping students discover verified,
+                            affordable and secure accommodation
+                            around universities in Kenya.
 
                         </p>
 
                     </div>
 
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 mb-4">
 
-                        <h5 class="fw-bold mb-3">
+                        <h5 class="fw-bold">
 
-                            Company
+                            Explore
 
                         </h5>
 
-                        <ul class="list-unstyled">
+                        <ul class="list-unstyled mt-3">
 
                             <li class="mb-2">
 
@@ -298,7 +297,7 @@
 
                                 <a href="#" class="text-white text-decoration-none">
 
-                                    About Us
+                                    Contact
 
                                 </a>
 
@@ -308,48 +307,43 @@
 
                     </div>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 mb-4">
 
-                        <h5 class="fw-bold mb-3">
+                        <h5 class="fw-bold">
 
-                            Support
+                            Contact
 
                         </h5>
 
-                        <ul class="list-unstyled">
+                        <p class="mt-3">
 
-                            <li class="mb-2">
+                            📧 support@housecampuske.com
 
-                                Email:
-                                support@housecampuske.com
+                        </p>
 
-                            </li>
+                        <p>
 
-                            <li class="mb-2">
+                            📍 Narok, Kenya
 
-                                Narok, Kenya
+                        </p>
 
-                            </li>
+                        <p>
 
-                            <li>
+                            📞 +254 XXX XXX XXX
 
-                                Open Monday - Saturday
-
-                            </li>
-
-                        </ul>
+                        </p>
 
                     </div>
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 mb-4">
 
-                        <h5 class="fw-bold mb-3">
+                        <h5 class="fw-bold">
 
                             Follow Us
 
                         </h5>
 
-                        <div class="fs-3">
+                        <div class="mt-3 fs-3">
 
                             <i class="fab fa-facebook me-3"></i>
 
@@ -365,7 +359,7 @@
 
                 </div>
 
-                <hr class="border-secondary my-4">
+                <hr class="border-secondary">
                 <div class="row align-items-center">
 
                     <div class="col-md-6">
@@ -389,13 +383,13 @@
 
                         <a href="#" class="text-white-50 text-decoration-none me-3">
 
-                            Terms
+                            Terms of Service
 
                         </a>
 
                         <a href="#" class="text-white-50 text-decoration-none">
 
-                            Contact
+                            Contact Us
 
                         </a>
 
