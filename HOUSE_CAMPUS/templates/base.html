@@ -28,12 +28,12 @@
     <style>
         body {
             font-family: Poppins, sans-serif;
-            background: #022c0c;
+            background: #f5f7fb;
             overflow-x: hidden;
         }
 
         :root {
-            --primary: #104daa;
+            --primary: #0D47A1;
             --secondary: #1565C0;
             --gold: #F4B400;
             --green: #00A651;
@@ -140,19 +140,27 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg fixed-top">
+    {% if request.resolver_match.url_name != 'register_student' and request.resolver_match.url_name
+    !=
+    'login' %}
+
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm bg-white">
 
         <div class="container">
 
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
 
-                <img src="{% static 'images/logo.png' %}" alt="HOUSE CAMPUS">
+                <img src="{% static 'images/logo.png' %}" alt="HOUSE CAMPUS" width="45"
+                  class="me-2">
 
-                HOUSE CAMPUS
+                <span class="fw-bold fs-4" style="color:#2563EB;">
+                    HOUSE CAMPUS
+                </span>
 
             </a>
 
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNav">
 
                 <span class="navbar-toggler-icon"></span>
 
@@ -163,112 +171,40 @@
                 <ul class="navbar-nav ms-auto align-items-center">
 
                     <li class="nav-item">
-
-                        <a class="nav-link" href="/">
-
-                            <i class="fa fa-home me-1"></i>
-
+                        <a class="nav-link fw-semibold" href="{% url 'home' %}">
                             Home
-
                         </a>
-
                     </li>
 
                     <li class="nav-item">
-
-                        <a class="nav-link" href="{% url 'property_list' %}">
-
-                            <i class="fa fa-building me-1"></i>
-
-                            Properties
-
+                        <a class="nav-link fw-semibold" href="{% url 'property_list' %}">
+                            Find Houses
                         </a>
-
-                    </li>
-
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="#">
-
-                            Universities
-
-                        </a>
-
-                    </li>
-
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="#">
-
-                            About
-
-                        </a>
-
-                    </li>
-
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="#">
-
-                            Contact
-
-                        </a>
-
                     </li>
 
                     {% if user.is_authenticated %}
 
-                    <li class="nav-item dropdown ms-3">
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="{% url 'dashboard' %}">
+                            Dashboard
+                        </a>
+                    </li>
 
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                    <li class="nav-item">
+                        <a class="btn ms-3 text-white" style="background:#10B981;"
+                          href="{% url 'profile' %}">
 
-                            <i class="fa fa-user-circle"></i>
-
-                            {{ user.first_name }}
+                            {{ user.first_name|default:user.username }}
 
                         </a>
-
-                        <ul class="dropdown-menu dropdown-menu-end">
-
-                            <li>
-
-                                <a class="dropdown-item" href="{% url 'dashboard' %}">
-
-                                    Dashboard
-
-                                </a>
-
-                            </li>
-
-                            <li>
-
-                                <a class="dropdown-item" href="{% url 'profile' %}">
-
-                                    My Profile
-
-                                </a>
-
-                            </li>
-
-                            <li>
-
-                                <a class="dropdown-item text-danger" href="{% url 'logout' %}">
-
-                                    Logout
-
-                                </a>
-
-                            </li>
-
-                        </ul>
-
                     </li>
 
                     {% else %}
 
                     <li class="nav-item ms-3">
 
-                        <a href="{% url 'login' %}" class="btn btn-login">
+                        <a class="btn btn-outline-primary rounded-pill px-4"
+                          href="{% url 'login' %}">
 
                             Login
 
@@ -276,11 +212,12 @@
 
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item ms-2">
 
-                        <a href="{% url 'register_student' %}" class="btn btn-register">
+                        <a class="btn rounded-pill px-4 text-white" style="background:#2563EB;"
+                          href="{% url 'register_student' %}">
 
-                            Create Account
+                            Get Started
 
                         </a>
 
@@ -295,6 +232,8 @@
         </div>
 
     </nav>
+
+    {% endif %}
 
     <main>
 
