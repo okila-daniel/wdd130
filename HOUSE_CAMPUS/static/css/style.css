@@ -808,11 +808,11 @@ body {
 .logo {
     text-align: center;
     padding-top: 15px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 .logo img {
-    width: 160px;
+    width: 60px;
     height: auto;
 }
 
