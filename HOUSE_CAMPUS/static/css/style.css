@@ -164,19 +164,17 @@ p {
 
 .btn-primary {
 
-    background: var(--primary);
+    background: #0B5ED7;
 
     border: none;
 
-    color: white;
+    border-radius: 14px;
 
 }
 
 .btn-primary:hover {
 
-    background: #102B65;
-
-    transform: translateY(-3px);
+    background: #084298;
 
 }
 
@@ -441,19 +439,11 @@ img {
 
 .navbar {
 
-    background: #ffffff;
+    height: 90px;
 
-    height: 85px;
+    background: #fff;
 
-    padding: 0 30px;
-
-    box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
-
-    position: sticky;
-
-    top: 0;
-
-    z-index: 999;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
 
 }
 
@@ -817,27 +807,14 @@ img {
 ========================== */
 
 .hero {
-
-    min-height: 92vh;
-
-    display: flex;
-
-    align-items: center;
-
     position: relative;
-
-    overflow: hidden;
-
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
     background:
-        linear-gradient(rgba(11, 31, 71, .78), rgba(11, 31, 71, .78)),
-        url("../images/hero.png");
-
-    background-size: cover;
-
-    background-position: center;
-
-    color: white;
-
+        linear-gradient(rgba(11, 31, 71, .55),
+            rgba(11, 31, 71, .55)),
+        url("../images/hero.png") center center/cover no-repeat;
 }
 
 .hero::before {
@@ -889,31 +866,18 @@ img {
 }
 
 .hero h1 {
-
-    color: rgb(207, 217, 222);
-
-    font-size: 4rem;
-
+    font-size: 72px;
     font-weight: 800;
-
+    color: #ffffff;
     line-height: 1.1;
-
-    margin-bottom: 25px;
-
+    text-shadow: 0 4px 20px rgba(0, 0, 0, .45);
 }
 
 .hero p {
-
-    color: #EAEAEA;
-
+    color: #F3F4F6;
     font-size: 22px;
-
-    max-width: 700px;
-
-    margin: auto;
-
-    margin-bottom: 40px;
-
+    font-weight: 400;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .45);
 }
 
 /* ==========================
@@ -922,13 +886,15 @@ img {
 
 .hero form {
 
-    background: white;
-
-    padding: 18px;
+    background: #fff;
 
     border-radius: 20px;
 
-    box-shadow: 0 15px 40px rgba(0, 0, 0, .25);
+    padding: 18px;
+
+    box-shadow: 0 20px 45px rgba(0, 0, 0, .18);
+
+    margin-top: 50px;
 
 }
 
@@ -976,21 +942,15 @@ img {
 
 .stats h2 {
 
-    font-size: 60px;
+    font-size: 65px;
 
     font-weight: 800;
-
-    color: var(--primary);
 
 }
 
 .stats h5 {
 
-    color: #666;
-
-    margin-top: 10px;
-
-    font-weight: 600;
+    font-size: 22px;
 
 }
 
@@ -1034,17 +994,11 @@ img {
 
 .property-card {
 
-    background: white;
-
-    border-radius: 22px;
+    border-radius: 25px;
 
     overflow: hidden;
 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
-
     transition: .35s;
-
-    height: 100%;
 
 }
 
@@ -1052,7 +1006,7 @@ img {
 
     transform: translateY(-12px);
 
-    box-shadow: 0 25px 50px rgba(0, 0, 0, .18);
+    box-shadow: 0 25px 55px rgba(0, 0, 0, .18);
 
 }
 
@@ -1948,13 +1902,11 @@ img {
 
 footer {
 
-    background: var(--primary);
+    background: #081B3D;
 
     color: white;
 
-    margin-top: 100px;
-
-    padding: 80px 0 30px;
+    padding: 90px 0 30px;
 
 }
 
