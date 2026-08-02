@@ -828,13 +828,11 @@ img {
 
     overflow: hidden;
 
-    background:
-        linear-gradient(rgba(11, 31, 71, .78), rgba(11, 31, 71, .78)),
-        url("../images/hero.png");
-
-    background-size: cover;
-
-    background-position: center;
+    .hero {
+        background: linear-gradient(135deg, #0B1F47, #12356F);
+        background-size: cover;
+        background-position: center;
+    }
 
     color: white;
 
