@@ -153,519 +153,184 @@
 
             <div class="info-card">
 
-                <h2 class="fw-bold">
+                <h3 class="section-title">
+                    Landlord Information
+                </h3>
 
-                    {{ property.title }}
+                <table class="table">
 
-                </h2>
+                    <tr>
+                        <th>Owner</th>
+                        <td>
+                            {{ property.landlord.get_full_name|default:property.landlord.username }}
+                        </td>
+                    </tr>
 
-                <div class="price">
-
-                    KSh {{ property.price }}
-
-                </div>
-
-                <div class="mt-3">
-
-                    <span class="badge-house">
-
-                        {{ property.house_type }}
-
-                    </span>
-
-                    {% if property.available %}
-
-                    <span class="badge badge-house available">
-
-                        Available
-
-                    </span>
-
-                    {% else %}
-
-                    <span class="badge badge-house occupied">
-
-                        Occupied
-
-                    </span>
-
+                    {% if property.landlord.phone %}
+                    <tr>
+                        <th>Phone</th>
+                        <td>{{ property.landlord.phone }}</td>
+                    </tr>
                     {% endif %}
 
-                </div>
-
-                <hr>
-
-                <table class="table property-table">
-
+                    {% if property.landlord.email %}
                     <tr>
-
-                        <th>
-
-                            University
-
-                        </th>
-
-                        <td>
-
-                            {{ property.university }}
-
-                        </td>
-
+                        <th>Email</th>
+                        <td>{{ property.landlord.email }}</td>
                     </tr>
-
-                    <tr>
-
-                        <th>
-
-                            County
-
-                        </th>
-
-                        <td>
-
-                            {{ property.county }}
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <th>
-
-                            Town
-
-                        </th>
-
-                        <td>
-
-                            {{ property.town }}
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <th>
-
-                            Bedrooms
-
-                        </th>
-
-                        <td>
-
-                            {{ property.bedrooms }}
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <th>
-
-                            Bathrooms
-
-                        </th>
-
-                        <td>
-
-                            {{ property.bathrooms }}
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <th>
-
-                            Distance
-
-                        </th>
-
-                        <td>
-
-                            {{ property.distance_to_university }} Minutes
-
-                        </td>
-
-                    </tr>
-
-                    {% if property.address %}
-
-                    <tr>
-
-                        <th>
-
-                            Address
-
-                        </th>
-
-                        <td>
-
-                            {{ property.address }}
-
-                        </td>
-
-                    </tr>
-
                     {% endif %}
 
                 </table>
 
-                <div class="info-card">
+                <div class="d-grid gap-3 mt-4">
 
-                    <h3 class="section-title">
+                    {% if property.landlord.whatsapp_number %}
+                    <a href="https://wa.me/{{ property.landlord.whatsapp_number }}?text=Hello,%20I%20am%20interested%20in%20{{ property.title }}"
+                      class="btn btn-success btn-lg" target="_blank">
 
-                        Amenities
+                        <i class="fab fa-whatsapp me-2"></i>
+                        Chat on WhatsApp
 
-                    </h3>
+                    </a>
+                    {% endif %}
 
-                    <div class="row">
+                    <a href="{% url 'properties:send_message' property.pk %}"
+                      class="btn btn-primary btn-lg">
 
-                        <div class="col-6 mb-3">
+                        <i class="fa-solid fa-envelope me-2"></i>
+                        Send Message
 
-                            <i class="fa-solid fa-wifi text-primary me-2"></i>
+                    </a>
 
-                            WiFi
+                    <a href="{% url 'properties:property_list' %}"
+                      class="btn btn-outline-dark btn-lg">
 
-                            {% if property.wifi %}
+                        <i class="fa-solid fa-arrow-left me-2"></i>
+                        Back to Properties
 
-                            <span class="text-success fw-bold">✓</span>
-
-                            {% else %}
-
-                            <span class="text-danger fw-bold">✗</span>
-
-                            {% endif %}
-
-                        </div>
-
-                        <div class="col-6 mb-3">
-
-                            <i class="fa-solid fa-faucet text-primary me-2"></i>
-
-                            Water
-
-                            {% if property.water %}
-
-                            <span class="text-success fw-bold">✓</span>
-
-                            {% else %}
-
-                            <span class="text-danger fw-bold">✗</span>
-
-                            {% endif %}
-
-                        </div>
-
-                        <div class="col-6 mb-3">
-
-                            <i class="fa-solid fa-bolt text-warning me-2"></i>
-
-                            Electricity
-
-                            {% if property.electricity %}
-
-                            <span class="text-success fw-bold">✓</span>
-
-                            {% else %}
-
-                            <span class="text-danger fw-bold">✗</span>
-
-                            {% endif %}
-
-                        </div>
-
-                        <div class="col-6 mb-3">
-
-                            <i class="fa-solid fa-car text-primary me-2"></i>
-
-                            Parking
-
-                            {% if property.parking %}
-
-                            <span class="text-success fw-bold">✓</span>
-
-                            {% else %}
-
-                            <span class="text-danger fw-bold">✗</span>
-
-                            {% endif %}
-
-                        </div>
-
-                    </div>
+                    </a>
 
                 </div>
-
-                <div class="info-card">
-
-                    <h3 class="section-title">
-
-                        Description
-
-                    </h3>
-
-                    <p class="text-muted">
-
-                        {{ property.description }}
-
-                    </p>
-
-                </div>
-
-                <div class="info-card">
-
-                    <h3 class="section-title">
-
-                        Landlord Information
-
-                    </h3>
-
-                    <table class="table">
-
-                        <tr>
-
-                            <th>
-
-                                Owner
-
-                            </th>
-
-                            <td>
-
-                                {{
-                                property.landlord.get_full_name|default:property.landlord.username
-                                }}
-
-                            </td>
-
-                        </tr>
-
-                        {% if property.landlord.phone %}
-
-                        <tr>
-
-                            <th>
-
-                                Phone
-
-                            </th>
-
-                            <td>
-
-                                {{ property.landlord.phone }}
-
-                            </td>
-
-                        </tr>
-
-                        {% endif %}
-
-                        {% if property.landlord.email %}
-
-                        <tr>
-
-                            <th>
-
-                                Email
-
-                            </th>
-
-                            <td>
-
-                                {{ property.landlord.email }}
-
-                            </td>
-
-                        </tr>
-
-                        {% endif %}
-
-                    </table>
-
-                    < class="d-grid gap-3 mt-4">
-
-                        {% if property.landlord.whatsapp_number %}
-
-                        <a href="https://wa.me/{{ property.landlord.whatsapp_number }}?text=Hello,%20I%20am%20interested%20in%20{{ property.title }}"
-                          class="btn btn-success btn-lg" target="_blank">
-
-                            <i class="fab fa-whatsapp me-2"></i>
-
-                            Chat on WhatsApp
-
-                        </a>
-
-                        {% endif %}
-
-                        <a href="{% url 'send_message' property.pk %}"
-                          class="btn btn-primary btn-lg">
-
-                            <i class="fa-solid fa-envelope me-2"></i>
-
-                            Send Message
-
-                        </a>
-
-                        <a href="{% url 'properties:property_list' %}"
-                          class="btn btn-outline-dark btn-lg">
-
-                            <i class="fa-solid fa-arrow-left me-2"></i>
-
-                            Back to Properties
-
-                        </a>
-
-                </div>
-
-                {% if property.latitude and property.longitude %}
-
-                <div class="info-card">
-
-                    <h3 class="section-title">
-
-                        Property Location
-
-                    </h3>
-
-                    <div id="map"></div>
-
-                    <div class="d-grid mt-4">
-
-                        <a href="https://www.google.com/maps?q={{ property.latitude }},{{ property.longitude }}"
-                          target="_blank" class="btn btn-warning btn-lg">
-
-                            <i class="fa-solid fa-location-dot me-2"></i>
-
-                            Open in Google Maps
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-                {% endif %}
 
             </div>
+
+            {% endif %}
 
         </div>
 
     </div>
-    {% if property.latitude and property.longitude %}
 
-    <div class="info-card">
+</div>
+{% if property.latitude and property.longitude %}
 
-        <h3 class="section-title">
-            <i class="fa-solid fa-location-dot text-danger me-2"></i>
-            Property Location
-        </h3>
+<div class="info-card">
 
-        <div class="map">
+    <h3 class="section-title">
+        <i class="fa-solid fa-location-dot text-danger me-2"></i>
+        Property Location
+    </h3>
 
-            <iframe
-              src="https://www.google.com/maps?q={{ property.latitude }},{{ property.longitude }}&z=16&output=embed"
-              loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+    <div class="map">
 
-        </div>
+        <iframe
+          src="https://www.google.com/maps?q={{ property.latitude }},{{ property.longitude }}&z=16&output=embed"
+          loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
 
-        <div class="d-grid mt-4">
+    </div>
 
-            <a href="https://www.google.com/maps?q={{ property.latitude }},{{ property.longitude }}"
-              target="_blank" class="btn btn-primary btn-lg">
+    <div class="d-grid mt-4">
 
-                <i class="fa-solid fa-location-dot me-2"></i>
+        <a href="https://www.google.com/maps?q={{ property.latitude }},{{ property.longitude }}"
+          target="_blank" class="btn btn-primary btn-lg">
 
-                Open in Google Maps
+            <i class="fa-solid fa-location-dot me-2"></i>
 
-            </a>
+            Open in Google Maps
 
-        </div>
+        </a>
 
-    </div>property_det
+    </div>
 
-    {% endif %}
+</div>property_det
 
-    <script>
+{% endif %}
 
-        // Image gallery preview
+<script>
 
-        const galleryImages = document.querySelectorAll(".gallery-image");
-        const mainImage = document.querySelector(".main-image");
+    // Image gallery preview
 
-        galleryImages.forEach(function (image) {
+    const galleryImages = document.querySelectorAll(".gallery-image");
+    const mainImage = document.querySelector(".main-image");
 
-            image.addEventListener("click", function () {
+    galleryImages.forEach(function (image) {
 
-                mainImage.src = this.src;
+        image.addEventListener("click", function () {
+
+            mainImage.src = this.src;
+
+        });
+
+    });
+
+</script>
+
+<script>
+
+    // Smooth scroll
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+        anchor.addEventListener('click', function (e) {
+
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+
+                behavior: 'smooth'
 
             });
 
         });
 
-    </script>
+    });
 
-    <script>
+</script>
 
-        // Smooth scroll
+<script>
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    // Fade animation
 
-            anchor.addEventListener('click', function (e) {
+    const cards = document.querySelectorAll(".info-card");
 
-                e.preventDefault();
+    const observer = new IntersectionObserver((entries) => {
 
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
+        entries.forEach(entry => {
 
-                    behavior: 'smooth'
+            if (entry.isIntersecting) {
 
-                });
+                entry.target.style.opacity = "1";
 
-            });
+                entry.target.style.transform = "translateY(0px)";
 
-        });
-
-    </script>
-
-    <script>
-
-        // Fade animation
-
-        const cards = document.querySelectorAll(".info-card");
-
-        const observer = new IntersectionObserver((entries) => {
-
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.style.opacity = "1";
-
-                    entry.target.style.transform = "translateY(0px)";
-
-                }
-
-            });
+            }
 
         });
 
-        cards.forEach(card => {
+    });
 
-            card.style.opacity = "0";
+    cards.forEach(card => {
 
-            card.style.transform = "translateY(30px)";
+        card.style.opacity = "0";
 
-            card.style.transition = "0.6s";
+        card.style.transform = "translateY(30px)";
 
-            observer.observe(card);
+        card.style.transition = "0.6s";
 
-        });
+        observer.observe(card);
 
-    </script>
+    });
 
-    {% endblock %}
+</script>
+
+{% endblock %}
