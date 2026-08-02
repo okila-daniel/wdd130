@@ -18,10 +18,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
       rel="stylesheet">
 
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
     <!-- Font Awesome -->
     <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -30,579 +26,292 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: Poppins, sans-serif;
+            background: #f5f7fb;
+            overflow-x: hidden;
+        }
 
         :root {
-
-            --primary: #2563EB;
-            --secondary: #0F172A;
-            --success: #10B981;
-            --warning: #F59E0B;
-            --light: #F8FAFC;
-            --white: #FFFFFF;
-            --text: #1E293B;
-
+            --primary: #0D47A1;
+            --secondary: #1565C0;
+            --gold: #F4B400;
+            --green: #00A651;
+            --light: #ffffff;
+            --dark: #071A35;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-
-            background: var(--light);
-
-            color: var(--text);
-
-            overflow-x: hidden;
-
-        }
-
-        /* NAVBAR */
 
         .navbar {
-
-            position: fixed;
-
-            top: 20px;
-
-            left: 50%;
-
-            transform: translateX(-50%);
-
-            width: 92%;
-
-            padding: 14px 30px;
-
-            background: rgba(255, 255, 255, .88);
-
-            backdrop-filter: blur(18px);
-
-            border-radius: 60px;
-
-            box-shadow: 0 15px 40px rgba(0, 0, 0, .08);
-
-            z-index: 9999;
-
-            transition: .35s;
-
+            background: white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+            padding: 15px 0;
         }
 
         .navbar-brand {
-
-            font-size: 30px;
-
-            font-weight: 800;
-
-            color: var(--primary) !important;
-
             display: flex;
-
             align-items: center;
-
+            font-weight: 700;
+            color: var(--primary) !important;
+            font-size: 28px;
         }
 
-        .logo {
-
-            height: 55px;
-
-            transition: .35s;
-
-        }
-
-        .logo:hover {
-
-            transform: rotate(-4deg) scale(1.05);
-
+        .navbar-brand img {
+            height: 60px;
+            margin-right: 10px;
         }
 
         .nav-link {
-
-            font-weight: 600;
-
-            margin: 0 12px;
-
-            color: #475569 !important;
-
-            transition: .35s;
-
+            color: #444 !important;
+            font-weight: 500;
+            margin-left: 10px;
         }
 
         .nav-link:hover {
-
             color: var(--primary) !important;
-
         }
-
-        .navbar-toggler {
-
-            border: none;
-
-            box-shadow: none !important;
-
-        }
-
-        /* BUTTONS */
 
         .btn-login {
-
-            padding: 11px 24px;
-
-            border-radius: 50px;
-
             border: 2px solid var(--primary);
-
-            background: white;
-
-            font-weight: 600;
-
             color: var(--primary);
-
-            transition: .3s;
-
+            border-radius: 30px;
+            padding: 8px 20px;
+            font-weight: 600;
         }
 
         .btn-login:hover {
-
             background: var(--primary);
-
             color: white;
-
         }
 
         .btn-register {
-
-            padding: 11px 26px;
-
-            border-radius: 50px;
-
-            background: linear-gradient(135deg, var(--primary), #3B82F6);
-
+            background: linear-gradient(90deg, #1565C0, #0D47A1);
             color: white;
-
+            border-radius: 30px;
+            padding: 8px 24px;
             font-weight: 600;
-
+            margin-left: 10px;
             border: none;
-
-            transition: .35s;
-
         }
 
         .btn-register:hover {
-
-            transform: translateY(-3px);
-
-            box-shadow: 0 18px 40px rgba(37, 99, 235, .35);
-
+            background: #083B86;
+            color: white;
         }
-
-        /* MAIN */
 
         main {
-
-            margin-top: 120px;
-
-            min-height: 80vh;
-
+            margin-top: 100px;
+            min-height: 75vh;
         }
-
-        /* CARDS */
-
-        .card {
-
-            border: none;
-
-            border-radius: 24px;
-
-            overflow: hidden;
-
-            box-shadow: 0 15px 35px rgba(0, 0, 0, .06);
-
-            transition: .35s;
-
-        }
-
-        .card:hover {
-
-            transform: translateY(-10px);
-
-            box-shadow: 0 25px 60px rgba(0, 0, 0, .12);
-
-        }
-
-        .card img {
-
-            transition: .45s;
-
-        }
-
-        .card:hover img {
-
-            transform: scale(1.05);
-
-        }
-
-        /* INPUTS */
-
-        .form-control {
-
-            border-radius: 18px;
-
-            padding: 14px 18px;
-
-            border: 1px solid #CBD5E1;
-
-            box-shadow: none;
-
-        }
-
-        .form-control:focus {
-
-            border-color: var(--primary);
-
-            box-shadow: 0 0 0 .2rem rgba(37, 99, 235, .15);
-
-        }
-
-        /* ALERTS */
-
-        .alert {
-
-            border: none;
-
-            border-radius: 18px;
-
-        }
-
-        /* DROPDOWN */
-
-        .dropdown-menu {
-
-            border: none;
-
-            border-radius: 18px;
-
-            box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
-
-            padding: 12px;
-
-        }
-
-        .dropdown-item {
-
-            border-radius: 12px;
-
-            padding: 10px 16px;
-
-            transition: .3s;
-
-        }
-
-        .dropdown-item:hover {
-
-            background: #EFF6FF;
-
-            color: var(--primary);
-
-        }
-
-        /* FOOTER */
 
         footer {
-
-            background: var(--secondary);
-
+            background: var(--dark);
             color: white;
-
-            padding: 80px 0 35px;
-
-            margin-top: 120px;
-
+            padding: 60px 0 30px;
         }
 
         footer h5 {
-
-            font-weight: 700;
-
+            color: var(--gold);
             margin-bottom: 20px;
-
         }
 
         footer a {
-
-            color: #CBD5E1;
-
+            color: white;
             text-decoration: none;
-
-            transition: .3s;
-
         }
 
         footer a:hover {
-
-            color: white;
-
-            padding-left: 6px;
-
+            color: var(--gold);
         }
 
-        /* SOCIAL */
-
         .social a {
-
-            display: inline-flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            width: 46px;
-
-            height: 46px;
-
-            background: #1E293B;
-
-            border-radius: 50%;
-
-            margin-right: 12px;
-
             color: white;
-
-            transition: .35s;
-
+            margin-right: 15px;
+            font-size: 22px;
         }
 
         .social a:hover {
-
-            background: var(--primary);
-
-            transform: translateY(-5px);
-
-        }
-
-        /* BADGES */
-
-        .badge {
-
-            padding: 8px 15px;
-
-            border-radius: 30px;
-
-        }
-
-        /* IMAGES */
-
-        img {
-
-            max-width: 100%;
-
-        }
-
-        /* SCROLLBAR */
-
-        ::-webkit-scrollbar {
-
-            width: 8px;
-
-        }
-
-        ::-webkit-scrollbar-thumb {
-
-            background: var(--primary);
-
-            border-radius: 30px;
-
-        }
-
-        /* RESPONSIVE */
-
-        @media (max-width: 992px) {
-
-            .navbar {
-                width: 96%;
-                padding: 12px 18px;
-                border-radius: 22px;
-            }
-
-            .navbar-collapse {
-                margin-top: 15px;
-                background: #fff;
-                border-radius: 20px;
-                padding: 20px;
-                box-shadow: 0 15px 40px rgba(0, 0, 0, .12);
-            }
-
-            .navbar-nav {
-                align-items: flex-start !important;
-            }
-
-            .nav-item {
-                width: 100%;
-            }
-
-            .nav-link {
-                display: block;
-                width: 100%;
-                padding: 14px 12px;
-                margin: 0;
-                border-radius: 12px;
-            }
-
-            .nav-link:hover {
-                background: #EFF6FF;
-            }
-
-            .dropdown {
-                width: 100%;
-            }
-
-            .dropdown-menu {
-                position: static !important;
-                transform: none !important;
-                width: 100%;
-                margin-top: 8px;
-                border: none;
-                box-shadow: none;
-                background: #F8FAFC;
-            }
-
-            .btn-login,
-            .btn-register {
-                width: 100%;
-                margin-top: 12px;
-            }
-
-            .logo {
-                height: 48px;
-            }
-
-            main {
-                margin-top: 110px;
-            }
+            color: var(--gold);
         }
     </style>
+
     {% block extra_css %}{% endblock %}
 
 </head>
 
 <body>
 
-    <div class="sidebar">
+    <nav class="navbar navbar-expand-lg fixed-top">
 
-        <div class="logo">
-            <a href="{% url 'home' %}">
-                <img src="{% static 'images/logo.jpg' %}" alt="HOUSE CAMPUS">
+        <div class="container">
+
+            <a class="navbar-brand" href="/">
+
+                <img src="{% static 'images/logo.png' %}" alt="HOUSE CAMPUS Logo" class="logo">
+
             </a>
-        </div>
 
-        <ul class="menu">
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
 
-            <li>
-                <a href="{% url 'home' %}">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </a>
-            </li>
+                <span class="navbar-toggler-icon"></span>
 
-            <li>
-                <a href="{% url 'properties:property_list' %}">
-                    <i class="fas fa-building"></i>
-                    <span>Properties</span>
-                </a>
-            </li>
+            </button>
 
-            <li>
-                <a href="#">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>Universities</span>
-                </a>
-            </li>
+            <div class="collapse navbar-collapse" id="navbarNav">
 
-            <li>
-                <a href="#">
-                    <i class="fas fa-info-circle"></i>
-                    <span>About</span>
-                </a>
-            </li>
+                <ul class="navbar-nav ms-auto align-items-center">
 
-            <li>
-                <a href="#">
-                    <i class="fas fa-phone"></i>
-                    <span>Contact</span>
-                </a>
-            </li>
+                    <li class="nav-item">
 
-        </ul>
+                        <a class="nav-link" href="/">
 
-        {% if user.is_authenticated %}
+                            <i class="fa fa-home me-1"></i>
 
-        <div class="user">
+                            Home
 
-            <div class="user-info">
-                <i class="fas fa-user-circle fa-2x"></i>
-                <h5>{{ user.first_name|default:user.username }}</h5>
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="{% url 'property_list' %}">
+
+                            <i class="fa fa-building me-1"></i>
+
+                            Properties
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="#">
+
+                            Universities
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="#">
+
+                            About
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="#">
+
+                            Contact
+
+                        </a>
+
+                    </li>
+
+                    {% if user.is_authenticated %}
+
+                    <li class="nav-item dropdown ms-3">
+
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+
+                            <i class="fa fa-user-circle"></i>
+
+                            {{ user.first_name }}
+
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+
+                            <li>
+
+                                <a class="dropdown-item" href="{% url 'dashboard' %}">
+
+                                    Dashboard
+
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a class="dropdown-item" href="{% url 'profile' %}">
+
+                                    My Profile
+
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a class="dropdown-item text-danger" href="{% url 'logout' %}">
+
+                                    Logout
+
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                    {% else %}
+
+                    <li class="nav-item ms-3">
+
+                        <a href="{% url 'login' %}" class="btn btn-login">
+
+                            Login
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a href="{% url 'register_student' %}" class="btn btn-register">
+
+                            Create Account
+
+                        </a>
+
+                    </li>
+
+                    {% endif %}
+
+                </ul>
+
             </div>
 
-            <ul class="menu">
-
-                <li>
-                    <a href="{% url 'dashboard' %}">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{% url 'profile' %}">
-                        <i class="fas fa-user"></i>
-                        <span>My Profile</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{% url 'logout' %}">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span>Logout</span>
-                    </a>
-                </li>
-
-            </ul>
-
         </div>
 
-        {% else %}
+    </nav>
 
-        <div class="user">
-
-            <a class="btn btn-primary w-100 mb-2" href="{% url 'login' %}">
-                Login
-            </a>
-
-            <a class="btn btn-warning w-100" href="{% url 'register_student' %}">
-                Create Account
-            </a>
-
-        </div>
-
-        {% endif %}
-
-    </div>
-
-    <main class="main-content">
+    <main>
 
         <div class="container">
 
             {% if messages %}
+
             {% for message in messages %}
+
             <div class="alert alert-{{ message.tags }} alert-dismissible fade show mt-3">
+
                 {{ message }}
+
                 <button class="btn-close" data-bs-dismiss="alert"></button>
+
             </div>
+
             {% endfor %}
+
             {% endif %}
 
             {% block content %}
@@ -640,7 +349,7 @@
 
                     <p><a href="/">Home</a></p>
 
-                    <p><a href="{% url 'properties:property_list' %}">Properties</a></p>
+                    <p><a href="{% url 'property_list' %}">Properties</a></p>
 
                     <p><a href="#">Universities</a></p>
 
