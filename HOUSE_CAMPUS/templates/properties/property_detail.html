@@ -487,7 +487,7 @@
 
                     </table>
 
-                    <div class="d-grid gap-3 mt-4">
+                    < class="d-grid gap-3 mt-4">
 
                         {% if property.landlord.whatsapp_number %}
 
@@ -511,15 +511,14 @@
 
                         </a>
 
-                        <a href="{% url 'property_list' %}" class="btn btn-outline-dark">
+                        <a href="{% url 'properties:property_list' %}"
+                          class="btn btn-outline-dark btn-lg">
 
                             <i class="fa-solid fa-arrow-left me-2"></i>
 
                             Back to Properties
 
                         </a>
-
-                    </div>
 
                 </div>
 
