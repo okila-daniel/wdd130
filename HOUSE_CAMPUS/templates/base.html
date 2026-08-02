@@ -416,43 +416,69 @@
 
         /* RESPONSIVE */
 
-        @media(max-width:992px) {
+        @media (max-width: 992px) {
 
             .navbar {
-
                 width: 96%;
+                padding: 12px 18px;
+                border-radius: 22px;
+            }
 
-                padding: 12px 20px;
+            .navbar-collapse {
+                margin-top: 15px;
+                background: #fff;
+                border-radius: 20px;
+                padding: 20px;
+                box-shadow: 0 15px 40px rgba(0, 0, 0, .12);
+            }
 
+            .navbar-nav {
+                align-items: flex-start !important;
+            }
+
+            .nav-item {
+                width: 100%;
             }
 
             .nav-link {
+                display: block;
+                width: 100%;
+                padding: 14px 12px;
+                margin: 0;
+                border-radius: 12px;
+            }
 
-                margin: 10px 0;
+            .nav-link:hover {
+                background: #EFF6FF;
+            }
 
+            .dropdown {
+                width: 100%;
+            }
+
+            .dropdown-menu {
+                position: static !important;
+                transform: none !important;
+                width: 100%;
+                margin-top: 8px;
+                border: none;
+                box-shadow: none;
+                background: #F8FAFC;
             }
 
             .btn-login,
             .btn-register {
-
                 width: 100%;
-
-                margin-top: 10px;
-
+                margin-top: 12px;
             }
 
             .logo {
-
                 height: 48px;
-
             }
 
             main {
-
-                margin-top: 105px;
-
+                margin-top: 110px;
             }
-
         }
     </style>
     {% block extra_css %}{% endblock %}
