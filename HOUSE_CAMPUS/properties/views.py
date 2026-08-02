@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.core.paginator import Paginator
+from django.contrib import messages
 
 from .models import Property
 from .forms import PropertyForm
@@ -52,6 +53,7 @@ def property_list(request):
 @login_required
 def add_property(request):
     if request.user.role != "landlord":
+        messages.error(request,"Only landlords can add properties")
         return redirect("property_list")
 
     if request.method == "POST":
@@ -89,6 +91,12 @@ def property_detail(request, pk):
 
 @login_required
 def edit_property(request, pk):
+
+    # Only landlords can edit properties
+    if request.user.role != "landlord":
+        messages.error(request, "Only landlords can edit properties.")
+        return redirect("property_list")
+
     property = get_object_or_404(
         Property,
         pk=pk,
@@ -104,7 +112,8 @@ def edit_property(request, pk):
 
         if form.is_valid():
             form.save()
-            return redirect("property_list")
+            messages.success(request, "Property updated successfully.")
+            return redirect("property_detail", pk=property.pk)
 
     else:
         form = PropertyForm(instance=property)
@@ -118,9 +127,14 @@ def edit_property(request, pk):
         },
     )
 
-
 @login_required
 def delete_property(request, pk):
+
+    # Only landlords can delete properties
+    if request.user.role != "landlord":
+        messages.error(request, "Only landlords can delete properties.")
+        return redirect("property_list")
+
     property = get_object_or_404(
         Property,
         pk=pk,
@@ -129,6 +143,7 @@ def delete_property(request, pk):
 
     if request.method == "POST":
         property.delete()
+        messages.success(request, "Property deleted successfully.")
         return redirect("property_list")
 
     return render(
