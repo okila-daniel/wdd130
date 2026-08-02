@@ -17,7 +17,7 @@
             Discover safe, affordable and verified accommodation near your university.
         </p>
 
-        <form action="{% url 'property_list' %}" method="GET" class="row justify-content-center">
+        <form action="{% url 'properties:property_list' %}" method="GET">
 
             <div class="col-md-6 mb-3">
 
@@ -254,7 +254,7 @@
 
         </p>
 
-        <a href="{% url 'property_list' %}" class="btn btn-success btn-lg">
+        <a href="{% url 'properties:property_list' %}" class="btn btn-success btn-lg">
 
             Explore Properties
 
