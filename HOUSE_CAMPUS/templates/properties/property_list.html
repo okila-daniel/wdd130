@@ -12,7 +12,7 @@
             <p class="text-muted">Find accommodation near your university.</p>
         </div>
 
-        <a href="{% url 'add_property' %}" class="btn btn-success">
+        <a href="{% url 'properties:add_property' %}" class="btn btn-success">
             <i class="fa-solid fa-plus"></i> Add Property
         </a>
     </div>
@@ -105,15 +105,18 @@
 
                     <div class="d-grid gap-2">
 
-                        <a href="{% url 'property_detail' property.pk %}" class="btn btn-primary">
+                        <a href="{% url 'properties:property_detail' property.pk %}"
+                          class="btn btn-primary">
                             View
                         </a>
 
-                        <a href="{% url 'edit_property' property.pk %}" class="btn btn-warning">
+                        <a href="{% url 'properties:edit_property' property.pk %}"
+                          class="btn btn-warning">
                             Edit
                         </a>
 
-                        <a href="{% url 'delete_property' property.pk %}" class="btn btn-danger">
+                        <a href="{% url 'properties:delete_property' property.pk %}"
+                          class="btn btn-danger">
                             Delete
                         </a>
 
@@ -156,11 +159,9 @@
             {% for num in page_obj.paginator.page_range %}
 
             <li class="page-item {% if page_obj.number == num %}active{% endif %}">
-
                 <a class="page-link" href="?page={{ num }}">
                     {{ num }}
                 </a>
-
             </li>
 
             {% endfor %}
