@@ -34,11 +34,8 @@ ALLOWED_HOSTS = [
 # -----------------------------------------------------------------------------
 
 INSTALLED_APPS = [
-
-    # Jazzmin Admin Theme
     "jazzmin",
 
-    # Django Apps
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -46,7 +43,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    # Project Apps
+    "cloudinary",
+    "cloudinary_storage",
+
     "accounts",
     "properties",
     "portal",
@@ -247,3 +246,15 @@ LOGOUT_REDIRECT_URL = "home"
 # -----------------------------------------------------------------------------
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+import os
+import cloudinary
+
+cloudinary.config(
+    cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.getenv("CLOUDINARY_API_KEY"),
+    api_secret=os.getenv("CLOUDINARY_API_SECRET"),
+    secure=True,
+)
+
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
