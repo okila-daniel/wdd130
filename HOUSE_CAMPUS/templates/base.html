@@ -494,76 +494,116 @@
     <div class="sidebar">
 
         <div class="logo">
-            <img src="{% static 'images/logo.png' %}" alt="HOUSE CAMPUS">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/logo.jpg' %}" alt="HOUSE CAMPUS">
+            </a>
         </div>
 
-        <li>
-            <a href="{% url 'home' %}">
-                <i class="fas fa-home"></i>
-                Home
-            </a>
-        </li>
+        <ul class="menu">
 
-        <li>
-            <a href="{% url 'properties:property_list' %}">
-                <i class="fas fa-building"></i>
-                Properties
-            </a>
-        </li>
+            <li>
+                <a href="{% url 'home' %}">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
 
-        <li>
-            <a href="#">
-                <i class="fas fa-graduation-cap"></i>
-                Universities
-            </a>
-        </li>
+            <li>
+                <a href="{% url 'properties:property_list' %}">
+                    <i class="fas fa-building"></i>
+                    <span>Properties</span>
+                </a>
+            </li>
 
-        <li>
-            <a href="#">
-                <i class="fas fa-info-circle"></i>
-                About
-            </a>
-        </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Universities</span>
+                </a>
+            </li>
 
-        <li>
-            <a href="#">
-                <i class="fas fa-phone"></i>
-                Contact
-            </a>
-        </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fas fa-phone"></i>
+                    <span>Contact</span>
+                </a>
+            </li>
+
+        </ul>
 
         {% if user.is_authenticated %}
 
         <div class="user">
 
-            <h4>{{ user.first_name|default:user.username }}</h4>
+            <div class="user-info">
+                <i class="fas fa-user-circle fa-2x"></i>
+                <h5>{{ user.first_name|default:user.username }}</h5>
+            </div>
 
-            <a href="{% url 'dashboard' %}">Dashboard</a>
+            <ul class="menu">
 
-            <a href="{% url 'profile' %}">My Profile</a>
+                <li>
+                    <a href="{% url 'dashboard' %}">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
 
-            <a href="{% url 'logout' %}">Logout</a>
+                <li>
+                    <a href="{% url 'profile' %}">
+                        <i class="fas fa-user"></i>
+                        <span>My Profile</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'logout' %}">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        {% else %}
+
+        <div class="user">
+
+            <a class="btn btn-primary w-100 mb-2" href="{% url 'login' %}">
+                Login
+            </a>
+
+            <a class="btn btn-warning w-100" href="{% url 'register_student' %}">
+                Create Account
+            </a>
 
         </div>
 
         {% endif %}
 
     </div>
-    <main>
+
+    <main class="main-content">
 
         <div class="container">
 
             {% if messages %}
-
             {% for message in messages %}
-
             <div class="alert alert-{{ message.tags }} alert-dismissible fade show mt-3">
-
                 {{ message }}
-
                 <button class="btn-close" data-bs-dismiss="alert"></button>
-
             </div>
+            {% endfor %}
+            {% endif %}
 
             {% endfor %}
 
