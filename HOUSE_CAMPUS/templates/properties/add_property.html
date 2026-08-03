@@ -143,41 +143,73 @@
 
 {% block extra_js %}
 
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<<script src="https://unpkg.com/leaflet/dist/leaflet.js">
+    </script>
 
-<script>
+    <script>
 
-    var map = L.map('map').setView([-1.286389, 36.817223], 13);
+        // Create the map
+        var map = L.map('map').setView([-1.286389, 36.817223], 17);
 
-    L.tileLayer(
-        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-        {
-            maxZoom: 19
+        // Satellite layer (Esri World Imagery)
+        var satellite = L.tileLayer(
+            'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+            {
+                attribution: '&copy; Esri',
+                maxZoom: 20
+            }
+        );
+
+        // Street layer (optional)
+        var streets = L.tileLayer(
+            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            {
+                attribution: '&copy; OpenStreetMap',
+                maxZoom: 20
+            }
+        );
+
+        // Load satellite by default
+        satellite.addTo(map);
+
+        // Allow switching between Satellite and Street
+        L.control.layers(
+            {
+                "🛰 Satellite": satellite,
+                "🗺 Street": streets
+            }
+        ).addTo(map);
+
+        var marker;
+
+        map.on('click', function (e) {
+
+            if (marker) {
+                map.removeLayer(marker);
+            }
+
+            marker = L.marker(e.latlng, {
+                draggable: true
+            }).addTo(map);
+
+            updateCoordinates(e.latlng);
+
+            marker.on('dragend', function () {
+                updateCoordinates(marker.getLatLng());
+            });
+
+        });
+
+        function updateCoordinates(latlng) {
+
+            document.getElementById("id_latitude").value = latlng.lat.toFixed(6);
+            document.getElementById("id_longitude").value = latlng.lng.toFixed(6);
+
+            document.getElementById("lat").innerHTML = latlng.lat.toFixed(6);
+            document.getElementById("lng").innerHTML = latlng.lng.toFixed(6);
+
         }
-    ).addTo(map);
 
-    var marker;
+    </script>
 
-    map.on('click', function (e) {
-
-        if (marker) {
-
-            map.removeLayer(marker);
-
-        }
-
-        marker = L.marker(e.latlng).addTo(map);
-
-        document.getElementById("id_latitude").value = e.latlng.lat;
-
-        document.getElementById("id_longitude").value = e.latlng.lng;
-
-        document.getElementById("lat").innerHTML = e.latlng.lat;
-
-        document.getElementById("lng").innerHTML = e.latlng.lng;
-
-    });
-
-</script>
-
-{% endblock %}
+    {% endblock %}
