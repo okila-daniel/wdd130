@@ -428,21 +428,18 @@
                     <table class="table">
 
                         <tr>
-
-                            <th>
-
-                                Owner
-
-                            </th>
-
+                            <th>Owner</th>
                             <td>
-
-                                {{
-                                property.landlord.get_full_name|default:property.landlord.username
-                                }}
-
+                                {% if property.landlord %}
+                                {% if property.landlord.first_name or property.landlord.last_name %}
+                                {{ property.landlord.first_name }} {{ property.landlord.last_name }}
+                                {% else %}
+                                {{ property.landlord.username }}
+                                {% endif %}
+                                {% else %}
+                                <span class="text-danger">No landlord assigned</span>
+                                {% endif %}
                             </td>
-
                         </tr>
 
                         {% if property.landlord.phone %}
