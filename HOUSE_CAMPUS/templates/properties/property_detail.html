@@ -501,13 +501,11 @@
                         </a>
 
                         {% endif %}
-
-                        <a href="{% url 'properties:send_message' property.pk %}"
+                        <a href="mailto:{{ property.landlord.email }}"
                           class="btn btn-primary btn-lg">
 
                             <i class="fa-solid fa-envelope me-2"></i>
-
-                            Send Message
+                            Send Email
 
                         </a>
 
