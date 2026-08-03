@@ -249,19 +249,17 @@ LOGOUT_REDIRECT_URL = "home"
 # DEFAULT PRIMARY KEY
 # -----------------------------------------------------------------------------
 
-import os
+import cloudinary
+
+cloudinary.config(
+    cloud_name="cihtgi0p",
+    api_key="YOUR_API_KEY",
+    api_secret="YOUR_API_SECRET",
+    secure=True,
+)
 
 CLOUDINARY_STORAGE = {
-    "CLOUD_NAME": os.getenv("CLOUDINARY_CLOUD_NAME"),
-    "API_KEY": os.getenv("CLOUDINARY_API_KEY"),
-    "API_SECRET": os.getenv("CLOUDINARY_API_SECRET"),
-}
-
-STORAGES = {
-    "default": {
-        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
+    "CLOUD_NAME": "cihtgi0p",
+    "API_KEY": "427125574634651",
+    "API_SECRET": "U3vVOOUU65hrUj6heFsgXmp3OA4",
 }
