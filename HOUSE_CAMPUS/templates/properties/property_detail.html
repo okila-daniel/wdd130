@@ -491,13 +491,10 @@
 
                         {% if property.landlord.whatsapp_number %}
 
-                        <a href="https://wa.me/{{ property.landlord.whatsapp_number }}?text=Hello,%20I%20am%20interested%20in%20{{ property.title }}"
+                        <a href="https://wa.me/{{ property.landlord.phone }}?text=Hello%20I%20am%20interested%20in%20{{ property.title }}"
                           class="btn btn-success btn-lg" target="_blank">
-
                             <i class="fab fa-whatsapp me-2"></i>
-
                             Chat on WhatsApp
-
                         </a>
 
                         {% endif %}
