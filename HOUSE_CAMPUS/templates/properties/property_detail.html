@@ -487,7 +487,7 @@
 
                     </table>
 
-                    < class="d-grid gap-3 mt-4">
+                    <div class="d-grid gap-3 mt-4">
 
                         {% if property.landlord.whatsapp_number %}
 
@@ -502,7 +502,7 @@
 
                         {% endif %}
 
-                        <a href="{% url 'send_message' property.pk %}"
+                        <a href="{% url 'properties:send_message' property.pk %}"
                           class="btn btn-primary btn-lg">
 
                             <i class="fa-solid fa-envelope me-2"></i>
@@ -520,74 +520,75 @@
 
                         </a>
 
-                </div>
+                    </div>
 
-                {% if property.latitude and property.longitude %}
+                    {% if property.latitude and property.longitude %}
 
-                <div class="info-card">
+                    <div class="info-card">
 
-                    <h3 class="section-title">
+                        <h3 class="section-title">
 
-                        Property Location
+                            Property Location
 
-                    </h3>
+                        </h3>
 
-                    <div id="map"></div>
+                        <div id="map"></div>
 
-                    <div class="d-grid mt-4">
+                        <div class="d-grid mt-4">
 
-                        <a href="https://www.google.com/maps?q={{ property.latitude }},{{ property.longitude }}"
-                          target="_blank" class="btn btn-warning btn-lg">
+                            <a href="https://www.google.com/maps?q={{ property.latitude }},{{ property.longitude }}"
+                              target="_blank" class="btn btn-warning btn-lg">
 
-                            <i class="fa-solid fa-location-dot me-2"></i>
+                                <i class="fa-solid fa-location-dot me-2"></i>
 
-                            Open in Google Maps
+                                Open in Google Maps
 
-                        </a>
+                            </a>
+
+                        </div>
 
                     </div>
 
-                </div>
+                    {% endif %}
 
-                {% endif %}
+                </div>
 
             </div>
 
         </div>
+        {% if property.latitude and property.longitude %}
 
+        <div class="info-card">
+
+            <h3 class="section-title">
+                <i class="fa-solid fa-location-dot text-danger me-2"></i>
+                Property Location
+            </h3>
+
+            <div class="map">
+
+                <iframe
+                  src="https://www.google.com/maps?q={{ property.latitude }},{{ property.longitude }}&z=16&output=embed"
+                  loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+
+            </div>
+
+            <div class="d-grid mt-4">
+
+                <a href="https://www.google.com/maps?q={{ property.latitude }},{{ property.longitude }}"
+                  target="_blank" class="btn btn-primary btn-lg">
+
+                    <i class="fa-solid fa-location-dot me-2"></i>
+
+                    Open in Google Maps
+
+                </a>
+
+            </div>
+
+        </div>property_det
     </div>
-    {% if property.latitude and property.longitude %}
-
-    <div class="info-card">
-
-        <h3 class="section-title">
-            <i class="fa-solid fa-location-dot text-danger me-2"></i>
-            Property Location
-        </h3>
-
-        <div class="map">
-
-            <iframe
-              src="https://www.google.com/maps?q={{ property.latitude }},{{ property.longitude }}&z=16&output=embed"
-              loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-
-        </div>
-
-        <div class="d-grid mt-4">
-
-            <a href="https://www.google.com/maps?q={{ property.latitude }},{{ property.longitude }}"
-              target="_blank" class="btn btn-primary btn-lg">
-
-                <i class="fa-solid fa-location-dot me-2"></i>
-
-                Open in Google Maps
-
-            </a>
-
-        </div>
-
-    </div>property_det
 
     {% endif %}
 
