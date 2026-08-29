@@ -2329,3 +2329,405 @@ section {
     }
 
 }
+
+body {
+    font-family: Poppins, sans-serif;
+    background: #f5f7fb;
+    overflow-x: hidden;
+}
+
+:root {
+    --primary: #0D47A1;
+    --secondary: #1565C0;
+    --gold: #F4B400;
+    --green: #00A651;
+    --light: #ffffff;
+    --dark: #071A35;
+}
+
+/* =========================
+       NAVBAR
+    ========================= */
+
+.navbar {
+    background: #ffffff !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    padding: 10px 0;
+    min-height: 80px;
+    z-index: 1050;
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo */
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin-right: 40px;
+}
+
+.navbar-brand img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Navigation */
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+.navbar-nav {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar-nav .nav-item {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link {
+    color: #333333 !important;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 10px 14px !important;
+    margin: 0 !important;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary) !important;
+    background: #f1f5fb;
+}
+
+.nav-link i {
+    color: var(--primary);
+}
+
+/* Active navigation */
+
+.nav-link.active {
+    color: var(--primary) !important;
+    font-weight: 600;
+}
+
+/* =========================
+       LOGIN BUTTON
+    ========================= */
+
+.btn-login {
+    border: 2px solid var(--primary);
+    color: var(--primary) !important;
+    background: #ffffff;
+    border-radius: 30px;
+    padding: 8px 20px !important;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    background: var(--primary);
+    color: #ffffff !important;
+}
+
+/* =========================
+       REGISTER BUTTON
+    ========================= */
+
+.btn-register {
+    background: linear-gradient(90deg,
+            #1565C0,
+            #0D47A1);
+    color: #ffffff !important;
+    border-radius: 30px;
+    padding: 10px 22px !important;
+    font-weight: 600;
+    margin-left: 5px;
+    border: none;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.btn-register:hover {
+    background: #083B86;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+}
+
+/* =========================
+       USER DROPDOWN
+    ========================= */
+
+.navbar .dropdown-menu {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    padding: 8px;
+}
+
+.navbar .dropdown-item {
+    border-radius: 8px;
+    padding: 10px 15px;
+}
+
+.navbar .dropdown-item:hover {
+    background: #f1f5fb;
+    color: var(--primary);
+}
+
+/* =========================
+       MOBILE MENU
+    ========================= */
+
+.navbar-toggler {
+    border: none;
+    padding: 8px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* =========================
+       MAIN
+    ========================= */
+
+main {
+    margin-top: 100px;
+    min-height: 75vh;
+}
+
+/* =========================
+       FOOTER
+    ========================= */
+
+footer {
+    background: var(--dark);
+    color: white;
+    padding: 60px 0 30px;
+}
+
+footer h5 {
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--gold);
+}
+
+.social a {
+    color: white;
+    margin-right: 15px;
+    font-size: 22px;
+}
+
+.social a:hover {
+    color: var(--gold);
+}
+
+/* =========================
+       RESPONSIVE
+    ========================= */
+
+@media (max-width: 991px) {
+
+    .navbar-collapse {
+        background: #ffffff;
+        margin-top: 10px;
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .navbar-nav {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 5px;
+    }
+
+    .navbar-nav .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        width: 100%;
+        text-align: left;
+    }
+
+    .btn-login,
+    .btn-register {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin: 5px 0 !important;
+    }
+}
+
+/* ==========================================================
+   HOUSE CAMPUS - HORIZONTAL WHITE NAVBAR
+========================================================== */
+
+.navbar {
+    height: 90px;
+    background: #ffffff !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    padding: 10px 0;
+    z-index: 1050;
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin-right: 40px;
+}
+
+.navbar-brand img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+}
+
+/* Navigation */
+.navbar-collapse {
+    display: flex !important;
+    justify-content: flex-end;
+}
+
+.navbar-nav {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 8px;
+    margin-left: auto;
+}
+
+/* Links */
+.navbar-nav .nav-item {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav .nav-link {
+    display: flex;
+    align-items: center;
+    color: #333333 !important;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 14px !important;
+    margin: 0 !important;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #0B1F47 !important;
+    background: #EEF4FF;
+}
+
+.navbar-nav .nav-link i {
+    color: #0B1F47;
+}
+
+/* Login */
+.btn-login {
+    border: 2px solid #0B1F47 !important;
+    color: #0B1F47 !important;
+    background: #ffffff !important;
+    border-radius: 30px !important;
+    padding: 8px 20px !important;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.btn-login:hover {
+    background: #0B1F47 !important;
+    color: #ffffff !important;
+}
+
+/* Create Account */
+.btn-register {
+    background: linear-gradient(90deg, #1565C0, #0D47A1) !important;
+    color: #ffffff !important;
+    border-radius: 30px !important;
+    padding: 10px 22px !important;
+    font-weight: 600;
+    border: none !important;
+    white-space: nowrap;
+}
+
+.btn-register:hover {
+    background: #083B86 !important;
+    color: #ffffff !important;
+}
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 991px) {
+
+    .navbar {
+        height: auto;
+        padding: 10px 20px;
+    }
+
+    .navbar-collapse {
+        display: block !important;
+        background: #ffffff;
+        margin-top: 10px;
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .navbar-nav {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 5px;
+        width: 100%;
+    }
+
+    .navbar-nav .nav-item {
+        width: 100%;
+    }
+
+    .navbar-nav .nav-link {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .btn-login,
+    .btn-register {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin: 5px 0 !important;
+    }
+}
